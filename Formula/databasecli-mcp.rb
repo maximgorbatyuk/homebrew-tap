@@ -1,20 +1,20 @@
 class DatabasecliMcp < Formula
   desc "MCP server for databasecli — AI agent gateway to PostgreSQL"
   homepage "https://github.com/maximgorbatyuk/databasecli"
-  version "0.1.1"
+  version "0.1.2"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/maximgorbatyuk/databasecli/releases/download/v0.1.1/databasecli-mcp-aarch64-apple-darwin.tar.xz"
-      sha256 "be7553f5eed2560e839d6be9003f456141ec7170ab5dedd3350485601f1884a2"
+      url "https://github.com/maximgorbatyuk/databasecli/releases/download/v0.1.2/databasecli-mcp-aarch64-apple-darwin.tar.xz"
+      sha256 "995f4c7f0bc884529929f6330e9c723829b3d7fd97125657e7880d67a3c5577c"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/maximgorbatyuk/databasecli/releases/download/v0.1.1/databasecli-mcp-x86_64-apple-darwin.tar.xz"
-      sha256 "b388a1649a124d3b4e0e67ac304f78c667c11f07c546baa9c4b751199f1fd843"
+      url "https://github.com/maximgorbatyuk/databasecli/releases/download/v0.1.2/databasecli-mcp-x86_64-apple-darwin.tar.xz"
+      sha256 "dc349c2ecd0763ee2b44881476987d81fa6fb35dd8f9feb783d6b33e20728808"
     end
   end
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/maximgorbatyuk/databasecli/releases/download/v0.1.1/databasecli-mcp-x86_64-unknown-linux-gnu.tar.xz"
-    sha256 "730b4e8e18842c41f8211479d0d2db228c289d551db337beae470047c72b2324"
+    url "https://github.com/maximgorbatyuk/databasecli/releases/download/v0.1.2/databasecli-mcp-x86_64-unknown-linux-gnu.tar.xz"
+    sha256 "62f1fffb5716ca064ff41b6d5ddc0c37eba595f0e26ec616f3dbda9beade3a34"
   end
   license "MIT"
 
