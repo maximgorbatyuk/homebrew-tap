@@ -1,20 +1,20 @@
 class Repolyze < Formula
   desc "Repository analytics for local and GitHub Git repositories"
   homepage "https://repolyze.app"
-  version "0.1.10"
+  version "0.1.11"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/maximgorbatyuk/repolyze/releases/download/v0.1.10/repolyze-aarch64-apple-darwin.tar.xz"
-      sha256 "e0a968d403656a407803808d7dc1fc378be2aee043dae0e84cd3dc9d8fcf6542"
+      url "https://github.com/maximgorbatyuk/repolyze/releases/download/v0.1.11/repolyze-aarch64-apple-darwin.tar.xz"
+      sha256 "90ea40dda6f2135d3bdfab314e73f3cf5a6f6cbb5615a4c31f07c9e78c2d9c4f"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/maximgorbatyuk/repolyze/releases/download/v0.1.10/repolyze-x86_64-apple-darwin.tar.xz"
-      sha256 "22964aa4f4e821254dff9d574f8271b4a4d18b758d80367c6cc315f1af4c3078"
+      url "https://github.com/maximgorbatyuk/repolyze/releases/download/v0.1.11/repolyze-x86_64-apple-darwin.tar.xz"
+      sha256 "62ffc3d61c147443c4c81949b3c35338c618ec4ac06b324e04f3750d0c01a60e"
     end
   end
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/maximgorbatyuk/repolyze/releases/download/v0.1.10/repolyze-x86_64-unknown-linux-gnu.tar.xz"
-    sha256 "32c3ab9c7862f67ddb00fbb8a97e829d219e2787b67e9824ec90b734bebba92c"
+    url "https://github.com/maximgorbatyuk/repolyze/releases/download/v0.1.11/repolyze-x86_64-unknown-linux-gnu.tar.xz"
+    sha256 "3860aa9c7e1c8961f3e1c7a2e70f0681a3f39c14cb897a6f816e65691d1a6ab0"
   end
   license "MIT"
 
