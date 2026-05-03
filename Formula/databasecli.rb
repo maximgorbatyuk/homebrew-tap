@@ -1,20 +1,20 @@
 class Databasecli < Formula
   desc "PostgreSQL database connection manager"
   homepage "https://github.com/maximgorbatyuk/databasecli"
-  version "0.1.6"
+  version "0.1.7"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/maximgorbatyuk/databasecli/releases/download/v0.1.6/databasecli-aarch64-apple-darwin.tar.xz"
-      sha256 "1530f1d47bc76d565c37168285f1149c7c4c18717d2827fa2e174b3996c62e6c"
+      url "https://github.com/maximgorbatyuk/databasecli/releases/download/v0.1.7/databasecli-aarch64-apple-darwin.tar.xz"
+      sha256 "2b83b7ebc45ba5bc16ef17df50786cec8bb05fefdb9374abaab844b0455a0bf7"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/maximgorbatyuk/databasecli/releases/download/v0.1.6/databasecli-x86_64-apple-darwin.tar.xz"
-      sha256 "10ee9c4a5a600475b1898d6907166e6be1116c20991efb0c0af2ae235b31180f"
+      url "https://github.com/maximgorbatyuk/databasecli/releases/download/v0.1.7/databasecli-x86_64-apple-darwin.tar.xz"
+      sha256 "f2c4eb1f941641ceeb9bff514f55a3f4edb708e611e374df53f4b1131af89098"
     end
   end
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/maximgorbatyuk/databasecli/releases/download/v0.1.6/databasecli-x86_64-unknown-linux-gnu.tar.xz"
-    sha256 "99189badb6b73510c9248d4c8ac8f95ecfb3f5a196cfdc01fd1cc1c75f6c24d3"
+    url "https://github.com/maximgorbatyuk/databasecli/releases/download/v0.1.7/databasecli-x86_64-unknown-linux-gnu.tar.xz"
+    sha256 "2f3506e7171dcb6f30e7ca2aebd2a4b4571719ba75c186690c6055d6114235f4"
   end
   license "MIT"
 
