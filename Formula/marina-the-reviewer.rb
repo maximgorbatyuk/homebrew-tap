@@ -1,8 +1,8 @@
 class MarinaTheReviewer < Formula
   desc "Prepare and validate AI code and architecture reviews"
   homepage "https://github.com/maximgorbatyuk/marina-the-reviewer"
-  url "https://github.com/maximgorbatyuk/marina-the-reviewer/releases/download/v0.3.1/marina-the-reviewer_0.3.1_source.tar.gz"
-  sha256 "65bf1c07d3d57c7270a76b0b90b3f8ea282bc7a8170825e6a38914ad81617769"
+  url "https://github.com/maximgorbatyuk/marina-the-reviewer/releases/download/v0.3.2/marina-the-reviewer_0.3.2_source.tar.gz"
+  sha256 "8d0b656fa400f52ed2a0628f8daf29bd0fddc543b1b963054d3bdc0dc0089ed7"
   license "MIT"
 
   depends_on "go" => :build
@@ -10,17 +10,21 @@ class MarinaTheReviewer < Formula
 
   def install
     buildinfo = "github.com/maximgorbatyuk/marina-the-reviewer/internal/buildinfo"
-    ldflags = "-s -w -X #{buildinfo}.Version=#{version} -X #{buildinfo}.Commit=516e34befcdf96a6426ace14e5a9629c999fec9f"
+    ldflags = "-s -w -X #{buildinfo}.Version=#{version} -X #{buildinfo}.Commit=8e5afb3e3b077116021de896bee15bde983310f3"
     system "go", "build", *std_go_args(output: bin/"marinadoreview", ldflags: ldflags), "./cmd/marinadoreview"
   end
 
   test do
+    ENV["MARINADOREVIEW_DB_FILE"] = (testpath/"stats/stats.sqlite3").to_s
+    ENV.delete "MARINADOREVIEW_USAGE_FILE"
     identity = JSON.parse(shell_output("#{bin}/marinadoreview --version --json"))
     assert_equal "marina-the-reviewer", identity.fetch("tool")
     assert_equal version.to_s, identity.fetch("version")
     assert_match "Run without arguments", shell_output("#{bin}/marinadoreview --help")
     usage = JSON.parse(shell_output("#{bin}/marinadoreview usage --period 7d --json"))
     assert_equal 7, usage.fetch("periods").first.fetch("days")
+    assert_equal 90, usage.fetch("retentionDays")
+    assert_equal 0, usage.fetch("periods").first.fetch("reviews").fetch("total")
     assert_match "marina-the-reviewer", shell_output("#{bin}/marinadoreview capabilities --json")
     mkdir "repo" do
       system "git", "init", "--initial-branch=dev"
