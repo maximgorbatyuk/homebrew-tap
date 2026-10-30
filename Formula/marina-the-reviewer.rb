@@ -1,8 +1,8 @@
 class MarinaTheReviewer < Formula
   desc "Prepare and validate AI code and architecture reviews"
   homepage "https://github.com/maximgorbatyuk/marina-the-reviewer"
-  url "https://github.com/maximgorbatyuk/marina-the-reviewer/releases/download/v0.1.1/marina-the-reviewer_0.1.1_source.tar.gz"
-  sha256 "27b744b58b65742866455587a0920d3774d22098f2e77606517103031b22b71e"
+  url "https://github.com/maximgorbatyuk/marina-the-reviewer/releases/download/v0.2.0/marina-the-reviewer_0.2.0_source.tar.gz"
+  sha256 "24d30cae6f5503b73118457cc7e96eae5b53abc711e61efb96dcf83017cb711d"
   license "MIT"
 
   depends_on "go" => :build
@@ -10,7 +10,7 @@ class MarinaTheReviewer < Formula
 
   def install
     buildinfo = "github.com/maximgorbatyuk/marina-the-reviewer/internal/buildinfo"
-    ldflags = "-s -w -X #{buildinfo}.Version=#{version} -X #{buildinfo}.Commit=7c193a92bdf4feb0a51a6b787719d2ae0964e409"
+    ldflags = "-s -w -X #{buildinfo}.Version=#{version} -X #{buildinfo}.Commit=d5cbd3e291ea8897af68e170ba018fc14420dd60"
     system "go", "build", *std_go_args(output: bin/"marinadoreview", ldflags: ldflags), "./cmd/marinadoreview"
   end
 
@@ -18,6 +18,7 @@ class MarinaTheReviewer < Formula
     identity = JSON.parse(shell_output("#{bin}/marinadoreview --version --json"))
     assert_equal "marina-the-reviewer", identity.fetch("tool")
     assert_equal version.to_s, identity.fetch("version")
+    assert_match "Run without arguments", shell_output("#{bin}/marinadoreview --help")
     assert_match "marina-the-reviewer", shell_output("#{bin}/marinadoreview capabilities --json")
     mkdir "repo" do
       system "git", "init", "--initial-branch=dev"
