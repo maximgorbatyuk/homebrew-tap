@@ -1,8 +1,8 @@
 class MarinaTheReviewer < Formula
   desc "Prepare and validate AI code and architecture reviews"
   homepage "https://github.com/maximgorbatyuk/marina-the-reviewer"
-  url "https://github.com/maximgorbatyuk/marina-the-reviewer/releases/download/v0.3.3/marina-the-reviewer_0.3.3_source.tar.gz"
-  sha256 "8092eab7f494b5ca540b7bfc2ae698ff615729b46f1feff9e6ab951309fbb64e"
+  url "https://github.com/maximgorbatyuk/marina-the-reviewer/releases/download/v0.3.4/marina-the-reviewer_0.3.4_source.tar.gz"
+  sha256 "883bafa1490d67bace0f7c801292bff88508ccebe62e98c25955238044fe0019"
   license "MIT"
 
   depends_on "go" => :build
@@ -10,7 +10,7 @@ class MarinaTheReviewer < Formula
 
   def install
     buildinfo = "github.com/maximgorbatyuk/marina-the-reviewer/internal/buildinfo"
-    ldflags = "-s -w -X #{buildinfo}.Version=#{version} -X #{buildinfo}.Commit=14b1afa1f9bc0d51a583a7cc9b9775194b89f14b"
+    ldflags = "-s -w -X #{buildinfo}.Version=#{version} -X #{buildinfo}.Commit=1e9dc9ad5d3ed9ab8cd36746406194038a7d5156"
     system "go", "build", *std_go_args(output: bin/"marinadoreview", ldflags: ldflags), "./cmd/marinadoreview"
   end
 
